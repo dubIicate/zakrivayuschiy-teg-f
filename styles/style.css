@@ -1,16 +1,288 @@
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-*/
-
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  background-image: var(--background-image);
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  font-family: var(--font-main), sans-serif;
+  font-variation-settings: "wght" var(--text-font-weight);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  padding-block: clamp(7.625rem, 7.45rem + 0.75vw, 8.125rem);
+  align-items: center;
+  background-color: var(--background-color);
+  inline-size: var(--block-width);
+  border: var(--border);
+  margin-top: 100px;
+  gap: 20px;
+  font-family: var(--font-accent);
+  text-transform: uppercase;
+}
+
+.header-title {
+  font-weight: 400;
+  font-size: clamp(3.063rem, 1.909rem + 4.92vw, 4.063rem);
+}
+
+.header-text {
+  font-size: clamp(0.875rem, 0.226rem + 2.77vw, 1.438rem);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  margin-block: 95px;
+  gap: 50px;
+}
+
+.card {
+  inline-size: var(--block-width);
+  background-color: var(--background-color);
+  border: var(--border);
+}
+
+.card-title {
+  padding: 4px 10px;
+  font-family: inherit;
+  font-size: inherit;
+  font-variation-settings: "wght" var(--title-font-weight);
+}
+
+.card-decor {
+  position: relative;
+  display: block;
+  border-block: var(--border);
+}
+
+.card-label {
+  font-family: var(--font-accent);
+  font-size: 14px;
+  text-transform: uppercase;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  mix-blend-mode: hard-light;
+  opacity: 0.5;
+  text-shadow: -1px 0 var(--color-shadow), 0 1px var(--color-shadow),
+    1px 0 var(--color-shadow), 0 -1px var(--color-shadow);
+}
+
+@supports (-webkit-text-stroke: 1px) {
+  .card_label {
+    -webkit-text-stroke: 1px var(--color-shadow);
+    text-shadow: none;
+  }
+}
+
+.card-image {
+  display: flex;
+  background-position: center;
+  width: 100%;
+  object-fit: cover;
+  max-block-size: 700px;
+  aspect-ratio: 1 / 1;
+}
+
+.card-body {
+  padding: 25px 25px 0 25px;
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: 21px;
+  margin-bottom: 25px;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: end;
+  gap: 8px;
+  padding: 0 25px 25px 0;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: var(--border);
+  transition: box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  background-color: #000000;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.button:hover::before {
+  transform: translateX(0);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible:not(.card__icon-button) {
+  box-shadow: 2px 2px 0px 0px #000000;
+  outline: none;
+}
+
+.card__icon-button {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 0;
+  border: none;
+}
+
+.card__icon-button::before {
+  content: none;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  outline: var(--border);
+}
+
+.card__like-button {
+  min-block-size: 38px;
+  min-inline-size: 130px;
+}
+.button__text {
+  position: relative;
+  font-family: var(--font-accent);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 90%;
+  color: #ffffff;
+  mix-blend-mode: difference;
+}
+
+.filter-brightness {
+  filter: brightness(30%);
+}
+
+.filter-contrast {
+  filter: contrast(10);
+}
+
+.filter-grayscale {
+  filter: grayscale(100%);
+}
+
+.filter-hue-rotate {
+  filter: hue-rotate(0.8turn);
+}
+
+.filter-invert {
+  filter: invert(70%);
+}
+
+.filter-opacity {
+  filter: opacity(0.7);
+}
+
+.filter-blur {
+  filter: blur(2px);
+}
+
+.filter-multiple {
+  filter: contrast(10) hue-rotate(0.8turn);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
+.button-footer {
+  padding-inline: 20px;
+  block-size: 55px;
+  gap: 8px;
+}
+
+.floppy {
+  width: 21px;
+  color: #ffffff;
+  mix-blend-mode: difference;
+}
+
+.dialog[open] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  padding: 30px;
+  max-inline-size: 353px;
+}
+
+.dialog .floppy {
+  width: 39px;
+}
+
+.dialog-content {
+  display: grid;
+  gap: 20px;
+  align-items: center;
+  grid-template-columns: min-content 1fr;
+}
+
+.dialog-content .button__text {
+  line-height: 150%;
+  text-transform: uppercase;
+}
+
+.button-dialog {
+  padding-block: 12.5px;
+  text-transform: uppercase;
+}
+
+dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+}
+
+@media (width <= 375px) {
+  .button-footer {
+    flex-direction: column;
+    block-size: 85px;
+  }
+
+  .button-footer .floppy {
+    width: 28px;
+  }
+
+  .dialog[open] {
+    min-inline-size: 341px;
+    padding: 30px 40px;
+  }
 }
